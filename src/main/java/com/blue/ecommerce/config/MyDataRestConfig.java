@@ -14,7 +14,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer{
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        // TODO Auto-generated method stub
         RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
 
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
@@ -23,7 +22,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer{
                 .forDomainType(Product.class)
                 .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-
+        
+        //diable http methods for productCategory: PUT POST DELETE
         config.getExposureConfiguration()
                 .forDomainType(ProductCategory.class)
                 .withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))

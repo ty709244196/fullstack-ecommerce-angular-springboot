@@ -1,0 +1,6 @@
+com\blue\ecommerce\entity\ProductCategory.class
+com\blue\ecommerce\config\MyDataRestConfig.class
+com\blue\ecommerce\SpringBootEcommerceApplication.class
+com\blue\ecommerce\dao\ProductCategoryRepository.class
+com\blue\ecommerce\entity\Product.class
+com\blue\ecommerce\dao\ProductRepository.class
