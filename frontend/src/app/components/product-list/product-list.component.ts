@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   currentCategoryId: number = 1;
+  searchMode: boolean = false;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute){
@@ -26,6 +27,27 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts(){
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    //if we got a keyword, then in search mode, elase just list products.
+    if(this.searchMode){
+      this.handleSearchProducts();
+    }else{
+      this.handleListProducts();
+
+    }
+  }
+  handleSearchProducts() {
+    const theKeyWord: string = this.route.snapshot.paramMap.get('keyword')!;
+
+    //search with keyword
+    this.productService.searchProducts(theKeyWord).subscribe(
+      data => {
+        this.products = data;
+      }
+    )
+  }
+
+  handleListProducts(){
     //check if 'id' parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     if(hasCategoryId){

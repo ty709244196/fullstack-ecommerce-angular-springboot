@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,8 +8,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
+  {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
@@ -20,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCategoryMenuComponent
+    ProductCategoryMenuComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,6 @@ const routes: Routes = [
     provideHttpClient(),
     ProductService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
