@@ -22,6 +22,42 @@
                     Oops! Chef Blue hasn't made any of those yet!
                 </div>
             </div>
+
+            <!--begin footer-->
+            <div class="footer-pagination container py-3">
+                <div class="row align-items-center">
+                  
+                  <!-- Empty left space for alignment -->
+                  <div class="col-md-3"></div>
+              
+                  <!-- Centered pagination -->
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <ngb-pagination
+                      [(page)]="thePageNumber"
+                      [pageSize]="thePageSize"
+                      [collectionSize]="theTotalElements"
+                      [maxSize]="5"
+                      [boundaryLinks]="true"
+                      (pageChange)="listProducts()">
+                    </ngb-pagination>
+                  </div>
+              
+                  <!-- Page size selector aligned to the right -->
+                  <div class="col-md-3 text-end">
+                    <label for="pageSizeSelect" class="me-2">Page Size</label>
+                    <select id="pageSizeSelect" #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                      <option selected>5</option>
+                      <option>10</option>
+                      <option>20</option>
+                      <option>50</option>
+                    </select>
+                  </div>
+              
+                </div>
+              </div>
+              
+            <!--end footer-->
+
         </div>
     </div>
 </div>
