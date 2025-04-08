@@ -974,7 +974,9 @@ footer ul li{
         margin-left:15px
     }
     .footer-pagination{
-        text-align:center
+        text-align:center;
+        padding: 15px 0;
+        background-color: #f8f9fa;
     }
     .product-box{
         text-align:centerg

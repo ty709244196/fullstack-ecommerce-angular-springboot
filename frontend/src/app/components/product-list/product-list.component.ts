@@ -10,9 +10,16 @@ import { ActivatedRoute } from '@angular/router';
     styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
+
   products: Product[] = [];
   currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
   searchMode: boolean = false;
+  previousKeyword: string = "";
+  //properties for pagination
+  thePageNumber: number = 1;
+  thePageSize: number= 5;
+  theTotalElements: number = 0;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute){
@@ -39,12 +46,13 @@ export class ProductListComponent implements OnInit {
   handleSearchProducts() {
     const theKeyWord: string = this.route.snapshot.paramMap.get('keyword')!;
 
-    //search with keyword
-    this.productService.searchProducts(theKeyWord).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+    //if we have different search keyword, set page number to 1
+    if(this.previousKeyword != theKeyWord){
+      this.thePageNumber = 1;
+    }
+    this.previousKeyword = theKeyWord;
+    this.productService.searchProductsPaginate(this.thePageNumber - 1, this.thePageSize, theKeyWord).subscribe(this.processPageResult());
+    
   }
 
   handleListProducts(){
@@ -57,10 +65,34 @@ export class ProductListComponent implements OnInit {
       //if no id, dufault to 1
       this.currentCategoryId = 1;
     }
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {this.products = data;}
-    )
+
+    //check if different category than previous, reset page number for 1
+    if(this.previousCategoryId != this.currentCategoryId){
+      this.thePageNumber = 1;
+    }
+    this.previousCategoryId = this.currentCategoryId;
+
+    this.productService.getProductListPaginate(this.thePageNumber - 1, this.thePageSize, this.currentCategoryId).subscribe(this.processPageResult());
+    
   }
+
+  updatePageSize(pageSize: string) {
+    this.thePageSize = +pageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
+    
+  }
+
+  processPageResult(){
+    return (data: any) => {
+      this.products = data._embedded.products;
+        this.thePageNumber = data.page.number + 1;
+        this.thePageSize = data.page.size;
+        this.theTotalElements = data.page.totalElements;
+    }
+  }
+
+
 
 
 
