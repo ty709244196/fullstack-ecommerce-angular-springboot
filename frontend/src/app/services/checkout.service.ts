@@ -13,7 +13,7 @@ export class CheckoutService {
   constructor(private httpClient: HttpClient) { }
 
   pleaseOrder(purchase: Purchase): Observable<any>{
-    console.log(JSON.stringify(purchase));
+    //console.log(JSON.stringify(purchase));
     return this.httpClient.post<Purchase>(this.purchaseUrl, purchase);
   }
 }
