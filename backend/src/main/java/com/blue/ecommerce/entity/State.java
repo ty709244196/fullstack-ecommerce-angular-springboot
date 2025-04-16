@@ -29,6 +29,4 @@ public class State {
     @ManyToOne
     private Country country;
 
-    //TO DO: many-to-one to country
-
 }
