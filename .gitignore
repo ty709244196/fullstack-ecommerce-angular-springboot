@@ -33,15 +33,43 @@ build/
 .vscode/
 
 # Backend ignores
+<<<<<<< HEAD
+backend/target/
+backend/.mvn/
+backend/.idea/
+<<<<<<< HEAD
+backend/src/main/resources/application.properties
+=======
+# Ignore Spring Boot config
+
+>>>>>>> 878619f (commit)
+*.key
+
+# Frontend ignores
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+=======
 /backend/target/
 /backend/.mvn/
 /backend/.idea/
+# Ignore Spring Boot config
+backend/src/main/resources/application.properties
 
 # Frontend ignores
 /frontend/node_modules/
 /frontend/dist/
 /frontend/.angular/
+/frontend/ssl-localhost/localhost.key
+>>>>>>> 5587dae (git ignor secret key)
+
+# Ignore local HTTPS certificates and keys
+frontend/ssl-localhost.localhost.key
+frontend/ssl-localhost.localhost.crt
+
 
 # General ignores
 .DS_Store
 *.log
+
+
