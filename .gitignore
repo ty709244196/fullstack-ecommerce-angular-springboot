@@ -37,7 +37,12 @@ build/
 backend/target/
 backend/.mvn/
 backend/.idea/
+<<<<<<< HEAD
 backend/src/main/resources/application.properties
+=======
+# Ignore Spring Boot config
+
+>>>>>>> 878619f (commit)
 *.key
 
 # Frontend ignores
