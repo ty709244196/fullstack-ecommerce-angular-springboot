@@ -33,6 +33,7 @@ build/
 .vscode/
 
 # Backend ignores
+<<<<<<< HEAD
 backend/target/
 backend/.mvn/
 backend/.idea/
@@ -43,7 +44,22 @@ backend/src/main/resources/application.properties
 frontend/node_modules/
 frontend/dist/
 frontend/.angular/
+=======
+/backend/target/
+/backend/.mvn/
+/backend/.idea/
+# Ignore Spring Boot config
+/backend/src/main/resources/application.properties
+
+# Frontend ignores
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular/
+/frontend/ssl-localhost/localhost.key
+>>>>>>> 5587dae (git ignor secret key)
 
 # General ignores
 .DS_Store
 *.log
+
+
