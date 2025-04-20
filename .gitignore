@@ -33,14 +33,16 @@ build/
 .vscode/
 
 # Backend ignores
-/backend/target/
-/backend/.mvn/
-/backend/.idea/
+backend/target/
+backend/.mvn/
+backend/.idea/
+backend/src/main/resources/application.properties
+*.key
 
 # Frontend ignores
-/frontend/node_modules/
-/frontend/dist/
-/frontend/.angular/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
 
 # General ignores
 .DS_Store
