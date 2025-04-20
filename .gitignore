@@ -63,6 +63,11 @@ backend/src/main/resources/application.properties
 /frontend/ssl-localhost/localhost.key
 >>>>>>> 5587dae (git ignor secret key)
 
+# Ignore local HTTPS certificates and keys
+frontend/ssl-localhost.localhost.key
+frontend/ssl-localhost.localhost.crt
+
+
 # General ignores
 .DS_Store
 *.log
