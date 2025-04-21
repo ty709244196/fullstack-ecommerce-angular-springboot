@@ -2,7 +2,7 @@
 
 ## Overview
 
-This full-stack e-commerce web application was developed as part of the "Full Stack: Angular and Java Spring Boot E-Commerce Website" Udemy course by Chad Darby. It provides a robust online shopping experience, enabling users to browse products, search by category or text, manage a shopping cart, process payments via Stripe, and access secure features with Okta authentication. The application uses a monolithic Spring Boot backend with an Angular frontend, with plans for future refactoring into a microservices architecture.
+This full-stack e-commerce web application provides a robust online shopping experience, enabling users to browse products, search by category or text, manage a shopping cart, process payments via Stripe, and access secure features with Okta authentication. The application uses a monolithic Spring Boot backend with an Angular frontend, with plans for future refactoring into a microservices architecture.
 
 ## Features
 
@@ -42,7 +42,7 @@ This full-stack e-commerce web application was developed as part of the "Full St
 - **Spring Boot**: RESTful API framework.
 - **Spring Data REST**: Exposes JPA repositories as REST endpoints.
 - **Spring Security**: Okta integration for JWT authentication.
-- **Java**: Backend language (Java 17).
+- **Java**: Backend language (Java 21).
 - **Hibernate/JPA**: ORM for database interactions.
 - **H2 Database**: In-memory database for development/testing.
 - **MySQL**: Production database.
