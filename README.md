@@ -1,59 +1,164 @@
-# AngularEcommerce
+# E-Commerce Website Blue's Bakery
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+## Overview
 
-## Development server
+This full-stack e-commerce web application was developed as part of the "Full Stack: Angular and Java Spring Boot E-Commerce Website" Udemy course by Chad Darby. It provides a robust online shopping experience, enabling users to browse products, search by category or text, manage a shopping cart, process payments via Stripe, and access secure features with Okta authentication. The application uses a monolithic Spring Boot backend with an Angular frontend, with plans for future refactoring into a microservices architecture.
 
-To start a local development server, run:
+## Features
+
+- **Product Listing**: Display products with name, description, price, and images.
+- **Online Shop Template**: Professional e-commerce UI template.
+- **Search by Category**: Filter products by categories (e.g., electronics, clothing).
+- **Text Search**: Keyword-based product search.
+- **Master/Detail View**: List view for summaries and detailed product pages.
+- **Pagination**: Paginated product listings for performance.
+- **Shopping Cart (CRUD)**: Add, update, or remove cart items.
+- **Checkout**: Streamlined purchase process.
+- **User Authentication**: Secure login/logout with Okta.
+- **VIP Page Access**: Exclusive page for authenticated users.
+- **Browser Refresh Handling**: Maintain session state on refresh.
+- **Multiple Orders Logic**: Support for concurrent customer orders.
+- **Order History**: Track orders for registered users.
+- **Secure Communication**: HTTPS for secure interactions.
+- **Payment Integration**: Secure payments via Stripe.
+
+## Future Improvements
+
+- Refactor into microservices (Product, Order, Payment) with Spring Cloud. (In Progress)
+- Deploy to Azure or another cloud platform.
+- Enhance performance with caching.
+
+## Technology Stack
+
+### Frontend
+
+- **Angular**: Single-page application framework.
+- **TypeScript**: Type-safe JavaScript.
+- **Bootstrap**: Responsive UI with shop template.
+- **Angular Material**: Consistent UI components.
+
+### Backend
+
+- **Spring Boot**: RESTful API framework.
+- **Spring Data REST**: Exposes JPA repositories as REST endpoints.
+- **Spring Security**: Okta integration for JWT authentication.
+- **Java**: Backend language (Java 17).
+- **Hibernate/JPA**: ORM for database interactions.
+- **H2 Database**: In-memory database for development/testing.
+- **MySQL**: Production database.
+- **Stripe API**: Payment processing.
+
+### Infrastructure
+
+- **Maven**: Build tool.
+- **Okta**: Authentication provider.
+- **Git**: Version control.
+
+## Prerequisites
+
+- **Java 17**: Install JDK.
+- **Node.js**: For Angular (v16+ recommended).
+- **Angular CLI**: Install globally with `npm install -g @angular/cli`.
+- **MySQL**: For production database.
+- **Okta Account**: For authentication.
+- **Stripe Account**: For payments.
+- **Maven**: For backend build.
+
+## Setup Instructions
+
+### Clone the Repository
 
 ```bash
-ng serve
+git clone https://github.com/your-username/ecommerce-platform.git
+cd ecommerce-platform
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Backend Setup
 
-## Code scaffolding
+1. **Configure MySQL**:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   - Create a database named `ecommerce`.
 
-```bash
-ng generate component component-name
-```
+   - Update `application.properties`:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+     ```properties
+     spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+     spring.datasource.username=your-username
+     spring.datasource.password=your-password
+     ```
 
-```bash
-ng generate --help
-```
+2. **Configure Okta**:
 
-## Building
+   - Create an Okta developer account and application.
 
-To build the project run:
+   - Update `application.properties`:
 
-```bash
-ng build
-```
+     ```properties
+     spring.security.oauth2.client.registration.okta.client-id=your-client-id
+     spring.security.oauth2.client.registration.okta.client-secret=your-client-secret
+     ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+3. **Configure Stripe**:
 
-## Running unit tests
+   - Obtain Stripe API keys and update `application.properties`:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+     ```properties
+     stripe.api.key=your-secret-key
+     ```
 
-```bash
-ng test
-```
+4. **Run Backend**:
 
-## Running end-to-end tests
+   ```bash
+   cd ecommerce-backend
+   mvn clean install
+   mvn spring-boot:run
+   ```
 
-For end-to-end (e2e) testing, run:
+   - APIs available at `http://localhost:8080/api`.
 
-```bash
-ng e2e
-```
+### Frontend Setup
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+1. **Install Dependencies**:
 
-## Additional Resources
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. **Configure Okta**:
+
+   - Install Okta Angular SDK: `npm install @okta/okta-angular @okta/okta-auth-js`.
+
+   - Update `app.module.ts` with Okta configuration.
+
+3. **Run Frontend**:
+
+   ```bash
+   ng serve
+   ```
+
+   - Access at `http://localhost:4200`.
+
+## Usage
+
+- **Browse Products**: View paginated products on the homepage.
+- **Search Products**: Filter by category or text search.
+- **Manage Cart**: Add/remove items and checkout.
+- **Authenticate**: Log in via Okta for order history or VIP page.
+- **Checkout**: Complete purchases with Stripe.
+- **Admin Tasks**: Manage products/orders (requires admin role).
+
+
+
+## Contributing
+
+Fork the repository, create a feature branch, and submit a pull request.
+
+## License
+
+MIT License.
+
+## Acknowledgments
+
+- Chad Darby’s Udemy course.
+- Okta and Stripe documentation.
