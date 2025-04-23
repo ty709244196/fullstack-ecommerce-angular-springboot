@@ -109,7 +109,7 @@ cd ecommerce-platform
 4. **Run Backend**:
 
    ```bash
-   cd ecommerce-backend
+   cd backend
    mvn clean install
    mvn spring-boot:run
    ```
